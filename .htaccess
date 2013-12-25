@@ -11,4 +11,5 @@ RedirectMatch 301 /r/manual	https://github.com/qcri-social/AIDR/wiki/Operator%27
 RedirectMatch 301 /r/test	http://aidr-dev.qcri.org/AIDRFetchManager/
 RedirectMatch 301 /r/tos	http://aidr.qcri.org/tos/
 
+# Non-standard redirects
 RedirectMatch 301 /www-demo-video	https://www.youtube.com/watch?v=QOcCFZXsBZw
