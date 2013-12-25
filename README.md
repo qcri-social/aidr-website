@@ -1,2 +1,1 @@
-aidr-website
-============
+This repository contains pages in http://aidr.qcri.org/
