@@ -1,0 +1,2 @@
+
+For redirects see ../.htaccess
