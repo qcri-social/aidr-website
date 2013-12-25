@@ -1,5 +1,5 @@
 
-# To work, this requires AllowOverrride All in the global server configuration.
+# To work, this requires AllowOverrride ... in the global server configuration.
 
 # Redirects (all must start with /r/ for consistency)
 RedirectMatch 301 /r/api	https://github.com/qcri-social/AIDR/wiki/API-documentation
