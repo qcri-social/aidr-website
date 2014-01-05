@@ -3,7 +3,7 @@
 
 # Redirects (all must start with /r/ for consistency)
 RedirectMatch 301 /r/api	https://github.com/qcri-social/AIDR/wiki/API-documentation
-RedirectMatch 301 /r/clickers	http://micromappers.org/
+RedirectMatch 301 /r/clickers	http://clickers.micromappers.org/
 RedirectMatch 301 /r/develop	https://github.com/qcri-social/AIDR
 RedirectMatch 301 /r/install	https://github.com/qcri-social/AIDR/wiki/Installation-instructions
 RedirectMatch 301 /r/learn	http://aidr.qcri.org/intro/
