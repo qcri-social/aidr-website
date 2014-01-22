@@ -7,7 +7,8 @@
     <meta name="robots" content="noindex, nofollow">
 
     <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
-
+    <script type="text/javascript" language="javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" language="javascript" src="js/app.js"></script>
     <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -20,36 +21,40 @@
     <div id="mainwrapper">
         <div id="main">
 
-    <p id="mainlead">AIDR &mdash;Artificial Intelligence for Disaster Response&mdash; is a free,
+        <p id="mainlead">AIDR &mdash;Artificial Intelligence for Disaster Response&mdash; is a free,
         open-source, and easy-to-use platform to filter and classify
         relevant microblog messages during humanitarian crises. AIDR uses human intelligence and machine intelligence to collect and automatically tag up to thousands of messages per minute.</p>
 
-    <table id="introtable"><tr>
-	<td width="20%">
-	<div class="introlead"><big><a href="r/learn">Learn</big> more &raquo;</a></div>
-	<div class="intropara">See why we created AIDR and how it works.</div>
-	</td>
-	<td width="20%">
-	<div class="introlead"><big><a href="r/clickers">Help</big> annotate &raquo;</a></div>
-	<div class="intropara">Support disaster response with a single click in MicroMappers.</div>
-	</td>
-	<td width="20%">
-	<div class="introlead"><big><a href="r/test">Test</big>-drive AIDR &raquo;</a></div>
-	<div class="intropara">We will clean up data and restart the system often during testing. Check the <a href="r/manual">manual</a> if you get lost.</div>
-	</td>
-	<td width="20%" class="disabled">
-	<div class="introlead"><big><a href="r/develop">Develop</big> AIDR &raquo;</a></div>
-	<div class="intropara">Get the source code, <a href="r/install">install</a> and extend this free software.<br/>(In progress.)</div>
-	</td>
-	<td width="20%" class="disabled">
-	<div class="introlead"><big>Browse</big> data &raquo;</div>
-	<div class="intropara">Explore visualizations or create your own using our <a href="r/api">API</a>.<br/>(To be available.)</div>
-	</td>
-    </table>
+        <table id="introtable">
+            <tr>
+                <td width="20%">
+                <div class="introlead"><big><a href="r/learn">Learn</big> more &raquo;</a></div>
+                <div class="intropara">See why we created AIDR and how it works.</div>
+                </td>
+                <td width="20%">
+                <div class="introlead"><big><a href="r/clickers">Help</big> annotate &raquo;</a></div>
+                <div class="intropara">Support disaster response with a single click in MicroMappers.</div>
+                </td>
+                <td width="20%">
+                <div class="introlead"><big><a href="r/test">Test</big>-drive AIDR &raquo;</a></div>
+                <div class="intropara">We will clean up data and restart the system often during testing. Check the <a href="r/manual">manual</a> if you get lost.</div>
+                </td>
+                <td width="20%" class="disabled">
+                <div class="introlead"><big><a href="r/develop">Develop</big> AIDR &raquo;</a></div>
+                <div class="intropara">Get the source code, <a href="r/install">install</a> and extend this free software.<br/>(In progress.)</div>
+                </td>
+                <td width="20%" class="disabled">
+                <div class="introlead"><big>Browse</big> data &raquo;</div>
+                <div class="intropara">Explore visualizations or create your own using our <a href="r/api">API</a>.<br/>(To be available.)</div>
+                </td>
+            </tr>
+        </table>
 
-   <p>Please subscribe to <a href="https://groups.google.com/d/forum/aidr-users">aidr-users</a> to receive announcements about the platform.</p>
+        <table>
+            <tr>
+                <td width="80%"><p>Please subscribe to <a href="https://groups.google.com/d/forum/aidr-users">aidr-users</a> to receive announcements about the platform.</p>
 
-   <p>AIDR is a project of the <a href="http://www.qcri.qa/">Qatar Computing Research Institute</a>, see <a href="r/credits">credits</a>.
+        <p>AIDR is a project of the <a href="http://www.qcri.qa/">Qatar Computing Research Institute</a>, see <a href="r/credits">credits</a>.
    Please contact
         <script type="text/javascript">
             //<![CDATA[
@@ -71,12 +76,18 @@
             while(x=eval(x));
             //-->
             //]]>
-        </script> for inquiries.</p>
+        </script> for inquiries.</p></td>
+                <td width="20%">
+                    <div class="border" id="log"></div>
+                </td>
+            </tr>
+        </table>
 
 
-	<div id="featured">
-	Featured in <a href="http://www.wired.co.uk/news/archive/2013-09/30/digital-humanitarianism"><img style="margin-top: 6px; margin-right: 12px;" align="absmiddle" src="img/featured/aidr_wired.jpg"/></a> <a href="http://www.cbc.ca/news/world/typhoon-haiyan-creates-testing-ground-for-crisis-mappers-1.2462119"><img align="absmiddle" src="img/featured/aidr_cbcnews.jpg"/></a> <a href="http://irevolution.net/2013/10/01/aidr-artificial-intelligence-for-disaster-response/"><img style="margin-top: -4px;" align="absmiddle" src="img/featured/aidr_irevolution.jpg"/></a>
-    </div>
+
+        <div id="featured">
+        Featured in <a href="http://www.wired.co.uk/news/archive/2013-09/30/digital-humanitarianism"><img style="margin-top: 6px; margin-right: 12px;" align="absmiddle" src="img/featured/aidr_wired.jpg"/></a> <a href="http://www.cbc.ca/news/world/typhoon-haiyan-creates-testing-ground-for-crisis-mappers-1.2462119"><img align="absmiddle" src="img/featured/aidr_cbcnews.jpg"/></a> <a href="http://irevolution.net/2013/10/01/aidr-artificial-intelligence-for-disaster-response/"><img style="margin-top: -4px;" align="absmiddle" src="img/featured/aidr_irevolution.jpg"/></a>
+        </div>
 
 
         </div>
@@ -96,7 +107,6 @@
         </div>
     </div>
 </div>
-
 
 </body>
 </html>
