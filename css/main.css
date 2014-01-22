@@ -194,14 +194,16 @@ body.main .footerwrapper .footer {
     font-weight: bold;
     font-size:14px;
 }
+
 #log .header{
     color: #00a79d;
 }
+
 #log .msg {
     margin-left: 11px;
     color: #6e6e6e;
     font-weight: normal;
-    font-size:0.70em;
+    font-size:0.65em;
 }
 #log .tweet {
     font-size:12px;
