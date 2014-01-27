@@ -180,8 +180,8 @@ body.main .footerwrapper .footer {
 
 #log {
     overflow: auto;
-    width: 280px;
-    height: 130px;
+    width: 320px;
+    height: 165px;
     margin-right: 8px;
     float: left;
 }
@@ -200,10 +200,10 @@ body.main .footerwrapper .footer {
 }
 
 #log .msg {
-    margin-left: 11px;
+    margin-left: 10px;
     color: #6e6e6e;
     font-weight: normal;
-    font-size:0.65em;
+    font-size:0.70em;
 }
 #log .tweet {
     font-size:12px;
@@ -211,7 +211,7 @@ body.main .footerwrapper .footer {
 .border {
     border: 2px solid rgba(0, 0, 0, 0.18);
     border-radius: 5px;
-    padding: 10px 0 10px 10px;
+    padding: 2px 5px 2px 5px;
     background-color: white;
 }
 
@@ -247,4 +247,7 @@ body.main .footerwrapper .footer {
     -moz-animation-name: colours;
     -moz-animation-timing-function: ease;
 }
-
+.dataFeedheader{
+    color: #00a79d;
+    font-size: 1.2em;
+}
