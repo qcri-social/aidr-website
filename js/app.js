@@ -33,7 +33,7 @@
                 {
                     $.ajax({
                         type: 'GET',
-                        url: 'http://aidr-dev.qcri.org/AIDROutput/crisis/fetch/channels/latest?callback=jsonp',
+                        url: 'http://aidr-dev.qcri.org/AIDROutput/rest/crisis/fetch/channels/latest?callback=jsonp',
                         dataType: 'jsonp',
                         success: renderList,
                         error: FailedRenderList,
