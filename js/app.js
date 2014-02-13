@@ -62,7 +62,7 @@
             if(list[0].nominal_labels != null || typeof list[0].nominal_labels != 'undefined'){
                 var template = '';
                 template = template +  '<table>';
-                template = template +  '<tr><td colspan="2" class="header">Crisis : ' + list[0].crisis_name + '</td></tr>';
+                template = template +  '<tr><td colspan="2" class="header"><a href="http://aidr-dev.qcri.org/AIDROutput/aidrTaggerLatest.html?crisisCode='+list[0].crisis_code+'">Crisis : ' + list[0].crisis_name + '</a></td></tr>';
                 template = template +  '<tr><td colspan="2" class="tweet">' + list[0].text + '</td></tr>';
 
                 var appList =  list[0].nominal_labels== null ? [] : (list[0].nominal_labels instanceof Array ? list[0].nominal_labels : [list[0]].nominal_labels);
