@@ -20,6 +20,10 @@ a:link {
 a:visited {
         color: #066d7b;
 }
+a.video-link {
+	padding-right: 18px;
+	background: url(../img/video-icon.png) no-repeat right;
+}
 
 body h1 {
 	font-size: 24px;

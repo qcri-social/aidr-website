@@ -11,6 +11,8 @@ RedirectMatch 301 /r/manual	https://github.com/qcri-social/AIDR/wiki/Operator's-
 RedirectMatch 301 /r/test	http://aidr-dev.qcri.org/AIDRFetchManager/
 RedirectMatch 301 /r/tos	http://aidr.qcri.org/tos/
 RedirectMatch 301 /r/credits	https://github.com/qcri-social/AIDR/wiki/Credits
+RedirectMatch 301 /r/video-overview	https://www.youtube.com/watch?v=pqI2qcigiCw
+RedirectMatch 301 /r/video-walkthrough	https://www.youtube.com/watch?v=bjeXxUMdvaQ
 
 # Non-standard redirects
 RedirectMatch 301 /www-demo-video	https://www.youtube.com/watch?v=QOcCFZXsBZw
