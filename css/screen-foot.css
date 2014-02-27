@@ -1,5 +1,4 @@
 
-
 .carousel {
 width:100%;
 position:relative;
@@ -12,22 +11,69 @@ box-shadow:#d2d2d2 2px 1px 12px;
 margin:0 auto 13px;
 }
 
-.carousel:first-child {
-margin-top:5px;
+
+.carousel table {
+    float:left;
+    position:relative;
+    height: 400px;
+    padding-top: 5px;
+
+}
+
+.carousel td{
+    vertical-align: top;
+
+}
+
+.carousel td p{
+    font-size: 0.9em;
+    padding-right: 10px;
 }
 
 
-.carousel article {
-float:left;
+.carouselMin {
+padding-left: 3px;
+width:97%;
 position:relative;
+overflow:hidden;
+z-index:1;
+background-color:#fff;
+margin:0;
 }
 
 
+.slidePageInFromLeft {
+  -webkit-animation: slidePageInFromLeft .8s cubic-bezier(.01,1,.22,.99) 1 0.25s normal forwards;
+  -o-animation: slidePageInFromLeft .8s cubic-bezier(.01,1,.22,.99) 1 0.25s normal forwards;
+  animation: slidePageInFromLeft .8s cubic-bezier(.01,1,.22,.99) 1 0.25s normal forwards
+}
+
+.openpage {
+  -webkit-animation: rotatePageInFromRight 1s cubic-bezier(.66,.04,.36,1.03) 1 normal forwards;
+  -o-animation: rotatePageInFromRight 1s cubic-bezier(.66,.04,.36,1.03) 1 normal forwards;
+  animation: rotatePageInFromRight 1s cubic-bezier(.66,.04,.36,1.03) 1 normal forwards
+}
 
 
+/*======================= media queries for animations =======================*/
 
+@media screen and (min-width: 64em) {
+@keyframes fadeInForward {
+    80% {
+      opacity: 0.9
+    }
 
+    100% {
+      -webkit-transform: translateZ(0) scale(1) translateX(-2em);
+      -ms-transform: translateZ(0) scale(1) translateX(-2em);
+      -o-transform: translateZ(0) scale(1) translateX(-2em);
+      transform: translateZ(0) scale(1) translateX(-2em);
+      opacity: 1
+    }
+}
+}
 
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 * {
   -moz-box-sizing: border-box;
@@ -49,8 +95,6 @@ position:relative;
 .clearfix {
   *zoom: 1
 }
-
-
 
 .dashboard {
   margin: 0 auto;
@@ -81,7 +125,68 @@ position:relative;
   }
 }
 
+@keyframes start {
+  0% {
+    -webkit-transform: translateX(200px);
+    -ms-transform: translateX(200px);
+    -o-transform: translateX(200px);
+    transform: translateX(200px);
+    opacity: 0
+  }
 
+  50% {
+    opacity: 1
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1
+  }
+}
+
+
+.r-page {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 300;
+  position: absolute;
+  right: 0;
+  top: 0;
+  left:0;
+  bottom:0;
+  opacity: 0;
+  color: white;
+  z-index: 10;
+  padding:10px;
+
+  -webkit-transform-origin: 100% 0%;
+  -ms-transform-origin: 100% 0%;
+  -o-transform-origin: 100% 0%;
+  transform-origin: 100% 0%;
+  -webkit-transform: rotateY(-90deg) translateZ(5em);
+  -ms-transform: rotateY(-90deg) translateZ(5em);
+  -o-transform: rotateY(-90deg) translateZ(5em);
+  transform: rotateY(-90deg) translateZ(5em)
+}
+
+
+.page-content{
+  overflow-y:auto;
+  max-height:100%;
+  font-size:.6em;
+  padding:.6em;
+  text-align:left;
+}
+/*default colors just in case you don't define these colors on the tiles*/
+.r-page{
+  background-color: white;
+  color:black;
+}
 
 .tile {
   float: left;
@@ -104,13 +209,15 @@ position:relative;
 
 
 
-
 .tile-small {
   width: 176px;
+  height:155px;
   margin-right: 1.19%
 }
 
-
+.tile-small.last {
+  margin-right: 0
+}
 
 .tile div {
   position: absolute;
@@ -128,104 +235,80 @@ position:relative;
   transition: all .3s ease
 }
 
-
-
-
-/* rotate tile in 3D*/
-
-.rotate3d {
-  -webkit-perspective: 800px;
-  -ms-perspective: 800px;
-  -o-perspective: 800px;
-  perspective: 800px;
-  overflow: visible
+.tile div p {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 0.8em;
 }
 
-.faces {
-  -webkit-transform-style: preserve-3d;
-  -webkit-transition: -webkit-transform 1s;
-  -ms-transform-style: preserve-3d;
-  -o-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -o-transition: -o-transform 1s;
-  transition: -webkit-transform 1s;
-  transition: -ms-transform 1s;
-  transition: -o-transform 1s;
-  transition: transform 1s
+/*styling the individual tiles*/
+
+.tile-1 {
+  background-color: #65a59f;
+  color: white;
 }
 
-.faces div {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
-  backface-visibility: hidden
+.tile-1 a:link {
+        color: #03433b;
+        font-weight: bold;
+        text-decoration: underline;
 }
-.faces .front{/*default*/
-  background-color: #455962;
-  color: #ddd;
+.tile-1 a:visited {
+        color: #03433b;
+        font-weight: bold;
+        text-decoration: underline;
 }
-.rotate3dX .front {
-  background-color: #455962;
-  color: #ddd
-}
-.rotate3dY .front {
-  background-color: #00a79d;
-  color: #455962;
+/* slide text inside tile up */
+
+.slideTextUp div:nth-child(2) {
+  top: 100%
 }
 
-.faces .back {
-  background-color: #455962;
-  color: #ddd
+.slideTextUp:hover div {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%)
 }
 
-.front span {
-  display: inline-block;
-  font-size: 4em;
-  margin-top: .5em
+.tile-1 .p2 {
+  font-size: 0.7em;
+
 }
 
-.rotate3dY .back {
-  -webkit-transform: rotateY( 180deg );
-  -ms-transform: rotateY( 180deg );
-  -o-transform: rotateY( 180deg );
-  transform: rotateY( 180deg )
-}
-
-.rotate3dX .back {
-  -webkit-transform: rotateX( 180deg );
-  -ms-transform: rotateX( 180deg );
-  -o-transform: rotateX( 180deg );
-  transform: rotateX( 180deg )
-}
-
-.back p {
-  font-size: 0.6em;
+.tile-1 p {
   padding: 1.5em 0em
 }
 
-.front p {
-  padding: 2.5em 0em
+/*======================= media queries =======================*/
+
+
+@-o-keyframes start {
+  0% {
+    -webkit-transform: translateX(200px);
+    opacity: 0
+  }
+
+  50% {
+    opacity: 1
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    opacity: 1
+  }
 }
 
-.rotate3dY:hover .faces:hover {
-  -webkit-transform: rotateY( 180deg );
-  -ms-transform: rotateY( 180deg );
-  -o-transform: rotateY( 180deg );
-  transform: rotateY( 180deg )
-}
 
-.rotate3dX:hover .faces:hover {
-  -webkit-transform: rotateX( 180deg );
-  -ms-transform: rotateX( 180deg );
-  -o-transform: rotateX( 180deg );
-  transform: rotateX( 180deg )
+#dvLoading
+{
+   background:#fff url(../img/ajax-loader.gif) no-repeat center center;
+   height: 100px;
+   width: 100px;
+   position: relative;
+   z-index: 1000;
+   left: 50%;
+   top: 50%;
+   margin: 15px 0 0 -25px;
 }
 
