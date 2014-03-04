@@ -272,8 +272,11 @@ margin:0;
 }
 
 .tile-1 .p2 {
-  font-size: 0.7em;
+  font-size: 0.9em;
+}
 
+.tile-1 .p2 a:link, .tile-1 .p2 a:visited {
+  color: white !important;
 }
 
 .tile-1 p {
