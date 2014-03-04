@@ -27,6 +27,8 @@
         };
 
     $(document).ready(function() {
+        $("#dvLoading").fadeOut(5000);
+
         var refreshRate = 5000;
         var autoRefresh = setInterval(
                 function ()  // Call out to get the time
@@ -46,7 +48,7 @@
 
     function FailedRenderList() {
         //logger.clear();
-        var defaultTextHtml =  '<div id="alert"><b>Contacting real time tagger classifier.</b>' ;
+        var defaultTextHtml =  '<div id="alert"><b>No live feed is available</b>' ;
         document.getElementById('log').innerHTML=defaultTextHtml;
         $( "errMsg" ).css( "color", "red" );
 
@@ -61,8 +63,8 @@
         if(typeof list !='undefined' || list!= null ){
             if(list[0].nominal_labels != null || typeof list[0].nominal_labels != 'undefined'){
                 var template = '';
-                template = template +  '<table>';
-                template = template +  '<tr><td colspan="2" class="header">Crisis : ' + list[0].crisis_name + '</td></tr>';
+                template = template +  '<table style="padding: 7px 7px 0px 7px;width:100%;height: 132px;">';
+                template = template +  '<tr><td colspan="2"><a style="text-decoration: underline" href="http://aidr-dev.qcri.org/AIDROutput/aidrTaggerLatest.html?crisisCode='+list[0].crisis_code+'">Crisis : ' + list[0].crisis_name + '</a></td></tr>';
                 template = template +  '<tr><td colspan="2" class="tweet">' + list[0].text + '</td></tr>';
 
                 var appList =  list[0].nominal_labels== null ? [] : (list[0].nominal_labels instanceof Array ? list[0].nominal_labels : [list[0]].nominal_labels);
