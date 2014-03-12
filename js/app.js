@@ -70,7 +70,7 @@
                 var appList =  list[0].nominal_labels== null ? [] : (list[0].nominal_labels instanceof Array ? list[0].nominal_labels : [list[0]].nominal_labels);
 
                 $.each(appList, function(index, item) {
-                    template = template +  '<tr><td class="msg" width="100px">'+item.attribute_name+' </td><td class="msg">' + item.label_name + '  (Confidence: ' +  roundNumber(item.confidence)  + ')</td></tr>';
+                    template = template +  '<tr><td class="msg" width="100px">'+item.attribute_name+': </td><td class="msg">' + item.label_name + '  (Confidence: ' +  roundNumber(item.confidence)  + ')</td></tr>';
                 });
                 template =  template + '</table>';
                 logger.log(template);
