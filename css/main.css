@@ -135,48 +135,6 @@ body.main .footerwrapper .footer {
     text-decoration: underline;
 }
 
-/*
- * Main page
- */
-
-#mainlead {
-        font-size: 110%;
-}
-
-#introtable {
-        border-spacing: 10px;
-}
-#introtable td {
-        vertical-align: top;
-        border: solid 1px #0ba99f;
-        border-radius: 10px;
-        padding: 8px 8px 8px 8px;
-}
-#introtable .disabled {
-        background: url(../img/gray_and_white_diagonal_stripes_background_seamless.gif);
-        opacity: 0.8;
-        filter:alpha(opacity=80);
-        border: solid 1px #bbb;
-}
-#introtable .disabled a:link,
-#introtable .disabled a:visited {
-        color: #333;
-}
-#introtable .introlead {
-        font-size: 120%;
-        height: 1.8em;
-        padding: 18px 0px 18px 0px;
-}
-#introtable .introlead a:link, #introtable .introlead a:visited {
-        text-decoration: underline;
-}
-#introtable .introlead big {
-        font-size: 110%;
-}
-#introtable .intropara {
-        line-height: 1.8em;
-        padding: 16px 0px 32px 0px;
-}
 #featured {
         text-align: center;
         padding-top: 32px;
@@ -184,10 +142,11 @@ body.main .footerwrapper .footer {
 
 #log {
     overflow: auto;
-    width: 320px;
-    height: 165px;
+    width: 100%;
+    height: 132px;
     margin-right: 8px;
     float: left;
+    margin-bottom: 5px;
 }
 
 #log p {
@@ -240,6 +199,7 @@ body.main .footerwrapper .footer {
 #alert {
     font-size: 20px;
     padding-top: 15px;
+    margin: 10px 10px 10px 10px;
     line-height: 1.8em;
     -webkit-animation-direction: normal;
     -webkit-animation-duration: 10s;
@@ -258,7 +218,9 @@ body.main .footerwrapper .footer {
 }
 .dataFeedheader2{
     color: #00a79d;
-    font-size: 1.0em;
-    line-height: 250%;
+    font-size: 1.2em;
+    position: relative;
+    bottom: 0px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
