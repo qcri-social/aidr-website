@@ -48,7 +48,7 @@
 
     function FailedRenderList() {
         //logger.clear();
-        var defaultTextHtml =  '<div id="alert"><b>No live feed is available</b>' ;
+        var defaultTextHtml =  '<div id="alert"><b>Waiting for data ...</b>' ;
         document.getElementById('log').innerHTML=defaultTextHtml;
         $( "errMsg" ).css( "color", "red" );
 
