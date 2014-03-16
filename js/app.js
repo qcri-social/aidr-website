@@ -48,7 +48,7 @@
 
     function FailedRenderList() {
         //logger.clear();
-        var defaultTextHtml =  '<div id="alert"><b>No live feed is available</b>' ;
+        var defaultTextHtml =  '<div id="alert"><b>Waiting for data ...</b>' ;
         document.getElementById('log').innerHTML=defaultTextHtml;
         $( "errMsg" ).css( "color", "red" );
 
@@ -64,13 +64,13 @@
             if(list[0].nominal_labels != null || typeof list[0].nominal_labels != 'undefined'){
                 var template = '';
                 template = template +  '<table style="padding: 7px 7px 0px 7px;width:100%;height: 132px;">';
-                template = template +  '<tr><td colspan="2"><a style="text-decoration: underline" href="http://aidr-dev.qcri.org/AIDROutput/aidrTaggerLatest.html?crisisCode='+list[0].crisis_code+'">Crisis : ' + list[0].crisis_name + '</a></td></tr>';
+                template = template +  '<tr><td colspan="2"><a style="text-decoration: underline" href="http://aidr-dev.qcri.org/AIDROutput/aidrTaggerLatest.html?crisisCode='+list[0].crisis_code+'">Crisis: ' + list[0].crisis_name + '</a></td></tr>';
                 template = template +  '<tr><td colspan="2" class="tweet">' + list[0].text + '</td></tr>';
 
                 var appList =  list[0].nominal_labels== null ? [] : (list[0].nominal_labels instanceof Array ? list[0].nominal_labels : [list[0]].nominal_labels);
 
                 $.each(appList, function(index, item) {
-                    template = template +  '<tr><td class="msg" width="100px">'+item.attribute_name+' </td><td class="msg">' + item.label_name + '  (Confidence: ' +  roundNumber(item.confidence)  + ')</td></tr>';
+                    template = template +  '<tr><td class="msg" width="100px">'+item.attribute_name+': </td><td class="msg">' + item.label_name + '  (Confidence: ' +  roundNumber(item.confidence)  + ')</td></tr>';
                 });
                 template =  template + '</table>';
                 logger.log(template);
