@@ -15,34 +15,35 @@
         <div id="main">
 
 
-<div style="padding: 20px; float: right;"><iframe width="576" height="432" src="//www.youtube-nocookie.com/embed/pqI2qcigiCw?rel=0" frameborder="0" allowfullscreen></iframe></div>
 <h1><a href="../">AIDR</a>: What is AIDR?</h1>
 
 <p>
-AIDR is a free, open-source and easy to use platform that automatically filters and classifies relevant tweets that are posted during humanitarian crises. AIDR stands for Artificial Intelligence for Disaster Response.
+AIDR (Artificial Intelligence for Disaster Response) automatically collects and classifies tweets that are posted during humanitarian crises. There are far too much data produced via social media during crisis situations for humans to manage them on their own. In addition, the data are too rich and complex for machines to successfully process them. AIDR combines the best of both worlds by combining human and machine intelligence.
 </p>
 
+<h1>Who can use AIDR?</h1>
+
 <p>
-During times of crises and mass emergencies, people turn to social media to gather and disperse timely, relevant information. AIDR combines human intelligence and machine intelligence to process this data in a way that neither can do alone. Social media data during crises is too large to be processed by people, and too complex to be process by machines.
+If you work in humanitarian or crisis response and are familiar with Twitter, you can use AIDR to gather and classify tweets about a particular situation. All you need to start is a list of keywords or hashtags, and/or a geographical region of interest. Once your collection starts and you begin to gather tweets, you will need to define different categories to label the information communicated in the tweets, for example "Medical Needs" or "Sheltering." You can create your own categories, or you can use the examples we provide.
 </p>
 
 <h1>How does it work?</h1>
 
 <p>
-The first step is to collect tweets related to a new or ongoing disaster. The <em>Collector</em> helps you do this by filtering tweets using keywords and/or hashtags such as "hurricane" and "#Sandy," for example.  This is just like a regular Search on Twitter.com, which means most of the resulting tweets will not be relevant to disaster response or to the specific information needs of humanitarian organizations. This is where the Trainer comes in.
-</p>
-
-<p>
 <img align="right" src="../img/aidr_archi.png" hspace="4" vspace="4"/>
-While the Collector is a word-filter, the <em>Trainer</em> is a topic-filter. With the Trainer, users classify collected tweets by topics of interest, such as "Infrastructure Damage," and "Urgent needs," for example. The classifying is done using a simple microtasking interface, which means that more than one person (if desired) can contribute to classifying tweets that relate to infrastructure damage. In other words, a user can decide to classify the tweets themselves and/or choose to crowdsource the classification of said tweets. Built-in quality control features insure that the crowdsourced classification is accurate. The more tweets are tagged, the more accurate the automatic classifier will be. Ideally, at least 500 tweets should be labeled, but you can already see results with as little as 50.
+The first step is to collect tweets related to a disaster. The <em>Collector</em> helps you do this by filtering tweets using keywords and/or hashtags such as "hurricane" and "#Sandy," for example. This is just like a regular search on Twitter.com, which means many of the resulting tweets will contain your keywords and/or hashtags, but will not be relevant to disaster response or to the specific information needs of humanitarian organizations. This is where the Tagger comes in.
 </p>
 
 <p>
-Once this is done, the <em>Tagger</em> automatically applies the classifier to incoming tweets collected in real-time using the Collector.  All new tweets that relate to infrastructure damage (or other category) are automatically tagged and displayed on the Tagger, which can power a live dashboard and/or crisis map. There, end-users such as humanitarian organizations can correct any mis-tagged tweets which then automatically corrects the automated classifier, thus making it more accurate over time.
+While the Collector is a word-filter, the <em>Tagger</em> is a topic-filter. The tagger classifies tweets by topics of interest, such as "Infrastructure Damage," and "Donations," for example. The classification is done automatically based on a set of human-tagged items which are provided through <a href="http://clickers.micromappers.org/">MicroMappers.org</a>. More than one person (if desired) can contribute to classifying tweets.
 </p>
 
 <p>
-Want to see AIDR in action? Take a look at our <a class="video-link" href="../r/video-walkthrough">video walk-through</a> illustrating the main functionalities.
+Once this is done, the "Tagger" automatically applies the classifier to incoming tweets collected in real-time using the Collector. All new tweets that relate to infrastructure damage (or other category) are automatically tagged and displayed on the Tagger, which you can use to power a live dashboard and/or crisis map. 
+</p>
+
+<p>
+<strong>Want to see AIDR in action? Take a look at our <a class="video-link" href="../r/video-walkthrough">video walk-through illustrating the main functionalities &raquo;</a></strong>
 </p>
 
 <hr>
@@ -88,7 +89,17 @@ Want to see AIDR in action? Take a look at our <a class="video-link" href="../r/
     <div class="footer">
         <a href="http://www.qcri.qa/">A project by <img align="middle" class="footerqcrilogo" src="../img/qcri-gray-horiz.png"/></a>
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77328-8', 'qcri.org');
+  ga('send', 'pageview');
+
+</script>
+
 </body>
-</html>    </div>
-</div>
+</html>
 
