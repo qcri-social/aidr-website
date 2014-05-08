@@ -2,6 +2,7 @@
 # To work, this requires AllowOverrride ... in the global server configuration.
 
 # Redirects (all must start with /r/ for consistency)
+RedirectMatch 301 /r/data	http://aidr-dev.qcri.org/AIDRFetchManager/public.jsp
 RedirectMatch 301 /r/api	https://github.com/qcri-social/AIDR/wiki/API-documentation
 RedirectMatch 301 /r/clickers	http://clickers.micromappers.org/
 RedirectMatch 301 /r/develop	https://github.com/qcri-social/AIDR
