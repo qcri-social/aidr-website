@@ -26,16 +26,17 @@
 
         };
 
+/// please uncooment once output is fixed
     $(document).ready(function() {
         $("#dvLoading").fadeOut(5000);
-
-        var refreshRate = 5000;
-        var autoRefresh = setInterval(
+        TempRenderList();
+         var refreshRate = 5000;
+         var autoRefresh = setInterval(
                 function ()  // Call out to get the time
-                {
+               {
                     $.ajax({
                         type: 'GET',
-                        url: 'http://aidr-dev.qcri.org/AIDROutput/rest/crisis/fetch/channels/latest?callback=jsonp',
+                        url: 'http://aidr-prod.qcri.org/AIDROutput/rest/crisis/fetch/channels/latest?callback=jsonp',
                         dataType: 'jsonp',
                         success: renderList,
                         error: FailedRenderList,
@@ -45,6 +46,13 @@
                 }, refreshRate);// end check
     });
 
+    function TempRenderList() {
+        //logger.clear();
+        var defaultTextHtml =  '<div id="alert"><b>This service is temporarily unavailable.</b>' ;
+        document.getElementById('log').innerHTML=defaultTextHtml;
+        $( "errMsg" ).css( "color", "red" );
+
+    }
 
     function FailedRenderList() {
         //logger.clear();
@@ -64,7 +72,7 @@
             if(list[0].nominal_labels != null || typeof list[0].nominal_labels != 'undefined'){
                 var template = '';
                 template = template +  '<table style="padding: 7px 7px 0px 7px;width:100%;height: 132px;">';
-                template = template +  '<tr><td colspan="2"><a style="text-decoration: underline" href="http://aidr-dev.qcri.org/AIDROutput/aidrTaggerLatest.html?crisisCode='+list[0].crisis_code+'">Crisis: ' + list[0].crisis_name + '</a></td></tr>';
+                template = template +  '<tr><td colspan="2"><a style="text-decoration: underline" href="http://aidr-prod.qcri.org/AIDRFetchManager/public/'+list[0].crisis_code+'/interactive-view-download">Crisis: ' + list[0].crisis_name + '</a></td></tr>';
                 template = template +  '<tr><td colspan="2" class="tweet">' + list[0].text + '</td></tr>';
 
                 var appList =  list[0].nominal_labels== null ? [] : (list[0].nominal_labels instanceof Array ? list[0].nominal_labels : [list[0]].nominal_labels);
@@ -88,4 +96,3 @@
         return num.toFixed(1);
         //return (num.toString().indexOf(".") !== -1) ? num.toFixed(1) : num;
     }
-

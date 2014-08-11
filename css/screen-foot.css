@@ -302,10 +302,9 @@ margin:0;
   }
 }
 
-
+/*======================= loading : when output is fixed, place back background:#fff url(../img/ajax-loader.gif) no-repeat center center;  =======================*/
 #dvLoading
 {
-   background:#fff url(../img/ajax-loader.gif) no-repeat center center;
    height: 100px;
    width: 100px;
    position: relative;
