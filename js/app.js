@@ -48,7 +48,7 @@
 
     function TempRenderList() {
         //logger.clear();
-        var defaultTextHtml =  '<div id="alert"><b>This service is temporarily unavailable.</b>' ;
+        var defaultTextHtml =  '<div id="alert">Waiting for data ... </div>' ;
         document.getElementById('log').innerHTML=defaultTextHtml;
         $( "errMsg" ).css( "color", "red" );
 
