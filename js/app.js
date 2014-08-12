@@ -48,7 +48,7 @@
 
     function TempRenderList() {
         //logger.clear();
-        var defaultTextHtml =  '<div id="alert">Waiting for data ... </div>' ;
+        var defaultTextHtml =  '<div id="alert">Loading data ... </div>' ;
         document.getElementById('log').innerHTML=defaultTextHtml;
         $( "errMsg" ).css( "color", "red" );
 
@@ -56,7 +56,7 @@
 
     function FailedRenderList() {
         //logger.clear();
-        var defaultTextHtml =  '<div id="alert"><b>Waiting for data ...</b>' ;
+        var defaultTextHtml =  '<div id="alert">Service temporarily unavailable</div>' ;
         document.getElementById('log').innerHTML=defaultTextHtml;
         $( "errMsg" ).css( "color", "red" );
 
