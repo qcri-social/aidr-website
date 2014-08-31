@@ -105,11 +105,16 @@
 .dashboard {
   margin: 0 auto;
   width: 100%;
+}
+
+/* Omitted from this version */
+
+.dashboard-animated {
+  opacity: 0;
   -webkit-transform: translateX(200px);
   -ms-transform: translateX(200px);
   -o-transform: translateX(200px);
   transform: translateX(200px);
-  opacity: 0;
   -webkit-animation: start 1s ease-out forwards;
   -o-animation: start 1s ease-out forwards;
   animation: start 1s ease-out forwards
