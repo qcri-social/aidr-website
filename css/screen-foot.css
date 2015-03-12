@@ -103,10 +103,34 @@
 }
 
 .dashboard {
-  margin: 0 auto;
+  margin: 0 auto 1.5em;
   width: 100%;
 }
 
+.dashboard .box {
+  width: 25%;
+  padding: 1%;
+  float: left;
+}
+
+.dashboard .box img {
+  text-align: center;
+  margin: 0 auto .4em;
+  display: block;
+}
+
+.dashboard .box h3 {
+  text-align: center;
+  font-size: 24px;
+  margin: 0 0 .4em;
+  font-family: "Arial", "san-serif";
+  font-weight: normal;
+}
+
+.dashboard .box p {
+  text-align: center;
+  font-size: 15px;
+}
 /* Omitted from this version */
 
 .dashboard-animated {
