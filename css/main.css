@@ -7,17 +7,23 @@ html {
 }
 
 body {
-	font-family: "Ubuntu", "Lucida Sans Unicode", "Lucida Grande", "Arial";
+    font-family: "Arial", "sans-serif";
     height: 100%;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: normal;
 }
 
-a:link, a:visited {
+a:link, a:visited, a:hover {
         text-decoration: none;
 }
 a:link {
         color: #0894a6;
 }
 a:visited {
+        color: #066d7b;
+}
+a:hover {
         color: #066d7b;
 }
 a.video-link {
