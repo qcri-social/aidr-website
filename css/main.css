@@ -338,7 +338,8 @@ a.video-link {
 
 .dashboard .box p.doc a {
   padding-left: 14px;
-  background: url(../img/publication_icon.png) 0 1px no-repeat;
+  background: url(../img/publication_icon.png) 0 0px no-repeat;
+  font-style: italic;
 }
 
 @-webkit-keyframes start {
