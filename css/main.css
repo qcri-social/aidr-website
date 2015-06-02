@@ -14,23 +14,6 @@ body {
     font-weight: normal;
 }
 
-a:link, a:visited, a:hover {
-        text-decoration: none;
-}
-a:link {
-        color: #0894a6;
-}
-a:visited {
-        color: #066d7b;
-}
-a:hover {
-        color: #066d7b;
-}
-a.video-link {
-	padding-right: 18px;
-	background: url(../img/video-icon.png) no-repeat right;
-}
-
 body h1 {
 	font-size: 24px;
 }
@@ -40,15 +23,6 @@ body h2 {
 	padding-top: 6px;
 	color: #65a59f;
 }
-
-
-.hidden {
-	display: none;
-}
-.highlighted {
-	background: #FF0;
-}
-
 .wrapper {
     min-height: 100%;
     height: auto !important;
@@ -185,6 +159,31 @@ body.main .footerwrapper .footer {
     background-color: white;
 }
 
+a:link, a:visited, a:hover {
+        text-decoration: none;
+}
+a:link {
+        color: #0894a6;
+}
+a:visited {
+        color: #066d7b;
+}
+a:hover {
+        color: #066d7b;
+}
+a.video-link {
+	padding-right: 18px;
+	background: url(../img/video-icon.png) no-repeat right;
+}
+
+.hidden {
+	display: none;
+}
+.highlighted {
+	background: #FF0;
+}
+
+
 @-webkit-keyframes colours {
  0% {color: #0ba99f;}
  25% {color: #6e6e6e;}
@@ -230,3 +229,320 @@ body.main .footerwrapper .footer {
     margin-bottom: 10px;
     font-weight: bold;
 }
+
+.carousel {
+	width:100%;
+	position:relative;
+	overflow:hidden;
+	z-index:1;
+	background-color:#fff;
+	margin:0 auto 13px;
+}
+
+.carousel table {
+	 float:left;
+	 position:relative;
+	 height: 400px;
+	 padding-top: 5px;
+
+}
+
+.carousel td{
+	 vertical-align: top;
+
+}
+
+.carousel td p{
+	 font-size: 0.9em;
+	 padding-right: 10px;
+}
+
+
+.carouselMin {
+	padding-left: 3px;
+	width:97%;
+	position:relative;
+	overflow:hidden;
+	z-index:1;
+	background-color:#fff;
+	margin:0;
+}
+
+#livefeed {
+	border: solid thin #d0e0d0;
+}
+
+#livefeed legend {
+	margin-left: 20px;
+	color: #fff;
+	background: white;
+	padding: 4px;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table
+}
+
+.clearfix:after {
+  clear: both
+}
+
+.clearfix {
+  *zoom: 1
+}
+
+.dashboard {
+  margin: 0 auto 1.5em;
+  width: 100%;
+}
+
+.dashboard .box {
+  width: 25%;
+  padding: 1%;
+  float: left;
+}
+
+.dashboard .box img {
+  text-align: center;
+  margin: 0 auto .4em;
+  display: block;
+}
+
+.dashboard .box h3 {
+  text-align: center;
+  font-size: 24px;
+  margin: 0 0 .4em;
+  font-family: "Arial", "san-serif";
+  font-weight: normal;
+}
+
+.dashboard .box p {
+  text-align: center;
+  font-size: 15px;
+}
+
+.dashboard .box p.doc {
+  font-size: 14px;
+}
+
+.dashboard .box p.doc a {
+  padding-left: 14px;
+  background: url(../img/publication_icon.png) 0 1px no-repeat;
+}
+
+@-webkit-keyframes start {
+  0% {
+	 -webkit-transform: translateX(200px);
+	 opacity: 0
+  }
+
+  50% {
+	 opacity: 1
+  }
+
+  100% {
+	 -webkit-transform: translateX(0);
+	 opacity: 1
+  }
+}
+
+@keyframes start {
+  0% {
+	 -webkit-transform: translateX(200px);
+	 -ms-transform: translateX(200px);
+	 -o-transform: translateX(200px);
+	 transform: translateX(200px);
+	 opacity: 0
+  }
+
+  50% {
+	 opacity: 1
+  }
+
+  100% {
+	 -webkit-transform: translateX(0);
+	 -ms-transform: translateX(0);
+	 -o-transform: translateX(0);
+	 transform: translateX(0);
+	 opacity: 1
+  }
+}
+
+
+.r-page {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 300;
+  position: absolute;
+  right: 0;
+  top: 0;
+  left:0;
+  bottom:0;
+  opacity: 0;
+  color: white;
+  z-index: 10;
+  padding:10px;
+
+  -webkit-transform-origin: 100% 0%;
+  -ms-transform-origin: 100% 0%;
+  -o-transform-origin: 100% 0%;
+  transform-origin: 100% 0%;
+  -webkit-transform: rotateY(-90deg) translateZ(5em);
+  -ms-transform: rotateY(-90deg) translateZ(5em);
+  -o-transform: rotateY(-90deg) translateZ(5em);
+  transform: rotateY(-90deg) translateZ(5em)
+}
+
+
+.page-content{
+  overflow-y:auto;
+  max-height:100%;
+  font-size:.6em;
+  padding:.6em;
+  text-align:left;
+}
+/*default colors just in case you don't define these colors on the tiles*/
+.r-page{
+  background-color: white;
+  color:black;
+}
+
+.tile {
+  float: left;
+  margin: 0 auto 1%;
+  color: white;
+  font-size: 1.3em;
+  text-align: center;
+  height: 8em;
+  font-weight: 300;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  background-color: #fff;
+  color: #333;
+  position: relative;
+  -webkit-transition: background-color 0.2s ease-out;
+  -o-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out
+}
+
+
+
+.tile-small {
+  width: 176px;
+  height:155px;
+  margin-right: 1.19%
+}
+
+.tile-small.last {
+  margin-right: 0
+}
+
+.tile div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: table;
+  padding: 0 1em;
+  -webkit-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease
+}
+
+.tile div p {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 0.8em;
+}
+
+/*styling the individual tiles*/
+
+.tile-1 {
+  background-color: #65a59f;
+  color: white;
+}
+
+.tile-1 a:link {
+		  color: #03433b;
+		  font-weight: bold;
+		  text-decoration: underline;
+}
+.tile-1 a:visited {
+		  color: #03433b;
+		  font-weight: bold;
+		  text-decoration: underline;
+}
+/* slide text inside tile up */
+
+.slideTextUp div:nth-child(2) {
+  top: 100%
+}
+
+.slideTextUp:hover div {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%)
+}
+
+.tile-1 .p2 {
+  font-size: 0.85em;
+}
+
+.tile-1 .p2 a:link, .tile-1 .p2 a:visited {
+  color: white !important;
+}
+
+.tile-1 p {
+  padding: 1.5em 0em
+}
+
+/*======================= media queries =======================*/
+
+
+@-o-keyframes start {
+  0% {
+	 -webkit-transform: translateX(200px);
+	 opacity: 0
+  }
+
+  50% {
+	 opacity: 1
+  }
+
+  100% {
+	 -webkit-transform: translateX(0);
+	 opacity: 1
+  }
+}
+
+/*======================= loading : when output is fixed, place back background:#fff url(../img/ajax-loader.gif) no-repeat center center;  =======================*/
+#dvLoading
+{
+	height: 100px;
+	width: 100px;
+	position: relative;
+	z-index: 1000;
+	left: 50%;
+	top: 50%;
+	margin: 15px 0 0 -25px;
+}
+

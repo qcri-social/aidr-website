@@ -6,6 +6,7 @@ RedirectMatch 301 /r/data	http://aidr-prod.qcri.org/AIDRFetchManager/public.jsp
 RedirectMatch 301 /r/api	https://github.com/qcri-social/AIDR/wiki/API-documentation
 RedirectMatch 301 /r/clickers	http://clickers.micromappers.org/
 RedirectMatch 301 /r/develop	https://github.com/qcri-social/AIDR
+RedirectMatch 301 /r/devwiki	https://github.com/qcri-social/AIDR/wiki
 RedirectMatch 301 /r/install	https://github.com/qcri-social/AIDR/wiki/Installation-instructions
 RedirectMatch 301 /r/learn	https://github.com/qcri-social/AIDR/wiki/AIDR-Overview
 RedirectMatch 301 /r/science	https://github.com/qcri-social/AIDR/wiki/The-science-behind-AIDR
