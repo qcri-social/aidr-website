@@ -155,21 +155,15 @@
 
 	    <div class="container marketing">
 	      <!-- START THE FEATURETTES -->
-	      <div class="row featurette">
+        <div class="row featurette">
 	        <div class="col-md-7">
 	        	<h2 class="featurette-heading">AIDR - Artificial Intelligence for Digital Response</h2>
-	          	<p class="lead">We present AIDR ,
-					a platform designed to perform automatic classi-
-					fication of crisis-related microblog communications. AIDR
-					enables humans and machines to work together to apply human
-					intelligence to large-scale data at high speed.
-				</p>
-				<a style="text-decoration: underline;" href="http://aidr.qcri.org/r/learn" target="_blank">
-					<b>Learn more about AIDR »</b>
-				</a>
+	          	<p class="lead"><b>AIDR</b>—the Grand Prize for the <a href="http://www.ossaward.org/bbs/board.php?bo_table=english_notice&amp;wr_id=18" target="blank">2015 Open Source Software System Challenge</a>—is a free and open platform to filter and classify social media messages related to emergencies, disasters, and humanitarian crises. AIDR uses human and machine intelligence to automatically tag up to thousands of messages per minute. <a style="text-decoration: underline;" href="http://aidr.qcri.org/r/learn "><b>Learn more »</b></a></p>
+              <p class="lead">The AIDR team fully endorses <a href="https://www.icrc.org/eng/assets/files/other/icrc-002-0999.pdf">ICRC's Data Protection Protocols</a> and <a href="https://docs.unocha.org/sites/dms/Documents/Humanitarianism%20in%20the%20Cyberwarfare%20Age%20-%20OCHA%20Policy%20Paper%2011.pdf">UN's Guidelines on Cyber Security</a>. AIDR users should familiarize themselves with both documents and respect international standards on data privacy, security, and protection.</p>
 	        </div>
 	        <div class="col-md-5">
-	          <img class="featurette-image img-responsive center-block" src="images/aidr_logo/aidr_logo_300h.png" data-holder-rendered="true">
+	          <img class="featurette-image img-responsive center-block" src="images/aidr_logo/aidr_logo_300h.png">
+            <p style="padding-top: 8em;PADDING-LEFT: 2em;">Subscribe to <a href="https://groups.google.com/d/forum/aidr-users">aidr-users</a> to receive announcements about the platform.  Contact <a href="mailto:aidr.qcri@gmail.com" target="_top">AIDR</a> for inquiries.</p>
 	        </div>
 	      </div>
 
@@ -300,7 +294,7 @@
 
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="http://libs.cartodb.com/cartodb.js/v3/3.15/cartodb.js"></script>
+  <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
   <script src="js/pusher.min.js"></script>
 	<script>
 		function homeFullScreen() {
@@ -329,7 +323,7 @@
 
 			$.ajax({
 					dataType: "jsonp",
-		            jsonpCallback:"jsonp",
+		      jsonpCallback:"jsonp",
 					url: "http://aidr-dev.qcri.org/AIDRFetchManager/public/collection/getTweetCounts",
 			        success: function(data){
 			        	var total_collections = (data.data.total_collection).toLocaleString();
