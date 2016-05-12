@@ -297,6 +297,7 @@
   <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
   <script src="js/pusher.min.js"></script>
 	<script>
+    var origianl_tweets = 0;
 		function homeFullScreen() {
 	    	var homeSection = $('.home');
 	    	var windowHeight = $(window).outerHeight();
@@ -326,9 +327,12 @@
 		      jsonpCallback:"jsonp",
 					url: "http://aidr-dev.qcri.org/AIDRFetchManager/public/collection/getTweetCounts",
 			        success: function(data){
+                origianl_tweets = data.data.total_tweets;
+                var new_tweets = data.data.new_tweets;
+
 			        	var total_collections = (data.data.total_collection).toLocaleString();
 			        	var running_collections = (data.data.total_running).toLocaleString();
-			        	var total_tweets = (data.data.total_tweets).toLocaleString();
+			        	var total_tweets = (origianl_tweets + new_tweets).toLocaleString();
 			        	var offline_collections = (data.data.total_offline).toLocaleString();
 
 			        	$("#totalCollections").text(total_collections);
@@ -348,12 +352,14 @@
            encrypted: true
          });
          socket.subscribe('collection');
-         socket.bind('count_updated',
+         socket.bind('COLLECTION_UPDATED',
            function(data) {
-             $("#totalCollections").text(data.total_collections.toLocaleString());
-             $("#runningCollections").text(data.running_collections.toLocaleString());
-             $("#totalTweets").text(data.total_tweets.toLocaleString());
-             $("#offlineCollections").text(data.offline_collections.toLocaleString());
+             var new_tweets = data.data.new_tweets;
+
+             $("#totalCollections").text(data.data.total_collection.toLocaleString());
+             $("#runningCollections").text(data.data.total_running.toLocaleString());
+             $("#totalTweets").text((origianl_tweets + new_tweets).toLocaleString());
+             $("#offlineCollections").text(data.data.total_offline.toLocaleString());
            }
          );
 
