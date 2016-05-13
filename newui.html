@@ -11,6 +11,7 @@
 	  <link href="css/carousel.css" rel="stylesheet">
 	  <link rel="stylesheet" href="css/cartodb.css" />
     <link rel="icon" type="image/png" href="images/aidr_wheel_logo/aidr_logo_30h.png">
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
 
 	 <style>
 		    html, body {
@@ -27,12 +28,12 @@
 
 		    .data {
 		    	height:80px;
-		    	width:60%;
+		    	width:90%;
 		    	z-index: 100;
 		    	//background-color: white;
 		    	position: absolute;
-		    	margin-left: 20%;
-		    	margin-right: 20%;
+		    	margin-left: 5%;
+		    	margin-right: 5%;
 		    	bottom: 0%;
 		    	padding-left: 2.5%;
 		    	//box-shadow: 0 2px 2px 3px rgba(0, 0, 0, 0.15);
@@ -40,11 +41,9 @@
 
 		    .dataItem {
 		    	height: 80px;
-		    	width: 25%;
 		    	float: left;
 		    	font-size: x-small;
 		    	text-align: center;
-		    	//border: 1px solid rgba(238, 238, 238, 0.47);
           border: none;
           color: white;
 		    	font-weight: 100;
@@ -83,12 +82,17 @@
       .navbar-wrapper {
         margin-top: 0px;
       }
-
-      #offlineCollections {
-        color: red;
-      }
       .leaflet-control-attribution{
         display: none;
+      }
+      .btn-circle {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        padding: 6px 0;
+        font-size: 12px;
+        line-height: 1.42;
+        border-radius: 50%;
       }
 
 	  </style>
@@ -136,16 +140,25 @@
 	    ================================================== -->
 	    <div id="map" class="home home-fullscreen" data-ride="carousel">
 	      <!-- Indicators -->
-	        <table class="hidden-xs hidden-sm data" id="data">
+        <div class="row data">
+            <div class="col-md-3 col-sm-2 col-xs-2 dataItem"><span id="totalCollections"></span><br>TOTAL COLLECTIONS</div>
+            <div class="col-md-3 col-sm-2 col-xs-2 dataItem"><span id="runningCollections"></span><br>RUNNING COLLECTIONS</div>
+            <div class="col-md-3 col-sm-6 col-xs-6 dataItem"><span id="totalTweets"></span><br>TOTAL TWEETS</div>
+            <div class="col-md-3 col-sm-2 hidden-xs dataItem"><span id="offlineCollections"></span><br>OFFLINE COLLECTIONS</div>
+        </div>
+	        <!-- <table class="hidden-xs hidden-sm data" id="data">
 		          <tr>
 		            <td class="dataItem text-muted"><span id="totalCollections"></span><br>TOTAL COLLECTIONS</td>
-		            <td class="dataItem text-muted"><span id="runningCollections"></span><br>RUNNING</td>
+		            <td class="dataItem text-muted"><span id="runningCollections"></span><br>RUNNING COLLECTIONS</td>
 		            <td class="dataItem text-muted"><span id="totalTweets"></span><br>TOTAL TWEETS</td>
-		            <td class="dataItem text-danger"><span id="offlineCollections"></span><br>COLLECTION OFFLINE</td>
-		            <!-- <td class="dataItem text-muted"><span>2</span><span style="font-size: small; color: #ccc;">m</span> <span>16</span><span style="font-size: small; color: #ccc;">s</span><br>DOWNTIME</td>
-		            <td class="dataItem text-primary"><span>99%</span><br>AVG. UPTIME</td> -->
+		            <td class="dataItem text-muted"><span id="offlineCollections"></span><br>OFFLINE COLLECTIONS</td>
 		          </tr>
-	        </table>
+	        </table> -->
+          <a class="btn btn-default btn-circle" href="#aidr" role="button"
+            style="position: absolute; z-index: 100; bottom: 10px; right: 10px"
+            data-toggle="tooltip" data-placement="top" title="Scroll Down" alt="Scroll Down">
+            <i class="fa fa-2x fa-chevron-down" style="margin-top: 5px"></i>
+          </a>
 	    </div><!-- /.carousel -->
 
 
@@ -155,7 +168,7 @@
 
 	    <div class="container marketing">
 	      <!-- START THE FEATURETTES -->
-        <div class="row featurette">
+        <div class="row featurette" id="aidr">
 	        <div class="col-md-7">
 	        	<h2 class="featurette-heading">AIDR - Artificial Intelligence for Digital Response</h2>
 	          	<p class="lead"><b>AIDR</b>—the Grand Prize for the <a href="http://www.ossaward.org/bbs/board.php?bo_table=english_notice&amp;wr_id=18" target="blank">2015 Open Source Software System Challenge</a>—is a free and open platform to filter and classify social media messages related to emergencies, disasters, and humanitarian crises. AIDR uses human and machine intelligence to automatically tag up to thousands of messages per minute. <a style="text-decoration: underline;" href="http://aidr.qcri.org/r/learn "><b>Learn more »</b></a></p>
@@ -194,7 +207,7 @@
 		  	</div>
 	        <div class="col-lg-4">
 	          <a href="http://qcri.com/" target="_blank">
-	          	<img src="images/qcri_logo.png" alt="500x500" width="250" height="140">
+	          	<img src="images/qcri_logo.png" width="200" height="140">
 	          </a>
 	          <h2>Qatar Computing Research Institute</h2>
 	          <p style="text-align: justify;">
@@ -210,7 +223,7 @@
 
 	        <div class="col-lg-4">
 	          <a href="http://www.standbytaskforce.org" target="_blank">
-	          	<img src="images/sbtf_logo.png" alt="500x500" width="360" height="140">
+	          	<img src="images/sbtf_logo.png" width="300" height="140">
 	          </a>
 	          <h2>StandBy Task Force</h2>
 	          <p style="text-align: justify;">
@@ -344,7 +357,7 @@
 					}
 				});
 
-        var socket = new Pusher('1eb98c94c2976297709d',{
+        var socket = new Pusher('a41a4e87b9b85131a237',{
            encrypted: true
          });
          socket.subscribe('collection');
