@@ -154,8 +154,8 @@
 		            <td class="dataItem text-muted"><span id="offlineCollections"></span><br>OFFLINE COLLECTIONS</td>
 		          </tr>
 	        </table> -->
-          <a class="btn btn-default btn-circle" href="#aidr" role="button"
-            style="position: absolute; z-index: 100; bottom: 10px; right: 10px"
+          <a id="down-button" class="btn btn-success btn-circle" href="#aidr" role="button"
+            style="position: absolute; z-index: 100; bottom: 10px; right: 10px; background-color: #f7941e"
             data-toggle="tooltip" data-placement="top" title="Scroll Down" alt="Scroll Down">
             <i class="fa fa-2x fa-chevron-down" style="margin-top: 5px"></i>
           </a>
@@ -293,7 +293,12 @@
 	      <!-- FOOTER -->
 	      <footer>
 	        <p class="pull-right">
-	        	<a href="#">Back to top</a>
+            <a id="back-to-top" class="btn btn-success btn-circle" href="#" role="button"
+              style="margin-top: -25px; border: none; background-color: #f7941e"
+              data-toggle="tooltip" data-placement="top" title="Scroll Down" alt="Back to Top">
+              <i class="fa fa-2x fa-chevron-up" style="margin-top: 5px"></i>
+            </a>
+	        	<!-- <a href="#" id="back-to-top">Back to top</a> -->
 	        </p>
 	        <p>
 	        	<a href="http://aidr.data.qcri.org/aidr-data/resources/QSS-Usr-Agr-Print-Version.docx.pdf" target="_blank">TERMS OF SERVICE&nbsp;</a>&#45;
@@ -332,8 +337,21 @@
 		 }
 
 		$(window).load(function() {
-			homeFullScreen();
 
+      $('#back-to-top').click(function () {
+          $('body,html').animate({
+              scrollTop: 0
+          }, 800);
+          return false;
+      });
+      $('#down-button').click(function () {
+          $('body,html').animate({
+              scrollTop: $(window).outerHeight()
+          }, 800);
+          return false;
+      });
+
+			homeFullScreen();
 			$.ajax({
 					dataType: "jsonp",
 		      jsonpCallback:"jsonp",
