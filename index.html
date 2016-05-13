@@ -1,124 +1,394 @@
-<html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AIDR: Artificial Intelligence for Disaster Response">
+
     <title>AIDR: Artificial Intelligence for Disaster Response</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	  <link href="css/carousel.css" rel="stylesheet">
+	  <link rel="stylesheet" href="css/cartodb.css" />
+    <link rel="icon" type="image/png" href="images/aidr_wheel_logo/aidr_logo_30h.png">
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
 
-    <!-- Remove when deploying -->
-    <meta name="robots" content="noindex, nofollow">
+	 <style>
+		    html, body {
+		    	width:100%;
+		    	height:100%;
+		    	padding: 0;
+		    	margin: 0;
+		    }
+		    #map {
+		    	width: 100%;
+		    	height:100%;
+		    	background: white;
+		    }
 
-    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
-    <script type="text/javascript" language="javascript" src="js/jquery-1.10.2.js"></script>
-    <link rel="stylesheet" href="css/main.css">
-</head>
+		    .data {
+		    	height:80px;
+		    	width:90%;
+		    	z-index: 100;
+		    	//background-color: white;
+		    	position: absolute;
+		    	margin-left: 5%;
+		    	margin-right: 5%;
+		    	bottom: 0%;
+		    	padding-left: 2.5%;
+		    	//box-shadow: 0 2px 2px 3px rgba(0, 0, 0, 0.15);
+		    }
 
-<body class="main">
-<div class="wrapper">
-    <div id="headerwrapper">
-        <div id="header"><img id="headeraidrlogo" src="img/aidr_logo_240x90_white.png">&nbsp;
+		    .dataItem {
+		    	height: 80px;
+		    	float: left;
+		    	font-size: x-small;
+		    	text-align: center;
+          border: none;
+          color: white;
+		    	font-weight: 100;
+		    }
+
+		    .dataItem span {
+		    	font-size: 35px;
+		    }
+
+		    #menu li a {
+		    	background: none;
+		    	color: white;
+		    	font-weight: bold;
+			}
+
+			#menu li:hover a {
+				background: none;
+		    	color: #f2911e;
+			}
+
+			#menu li:active a {
+				background: none;
+		    	color: white;
+			}
+
+			#loadingDiv {
+				top: 20%;
+		    	position: relative;
+		    	text-align: center;
+			}
+
+			#loadingDiv img {
+				display: block;
+				margin: 0 auto;
+			}
+      .navbar-wrapper {
+        margin-top: 0px;
+      }
+      .leaflet-control-attribution{
+        display: none;
+      }
+      .btn-circle {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        padding: 6px 0;
+        font-size: 12px;
+        line-height: 1.42;
+        border-radius: 50%;
+      }
+
+	  </style>
+  </head>
+
+<!-- NAVBAR================================================== -->
+  <body>
+	  <div id="loadingDiv">
+	  	<img class=".img-responsive" src="images/aidr_logo/aidr_logo_90h.png"><br>
+	  	<img class=".img-responsive" src="images/loading_spinner.gif" style="height: 75px;">
+	  </div>
+	  <div id="pageContent" style="display: none;">
+	    <div class="navbar-wrapper">
+	      <div class="container">
+
+	        <nav class="navbar navbar-static-top">
+	          <div class="container">
+	            <div class="navbar-header">
+	              <button type="button" style="margin: 18px;" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar" style="background-color: white;"></span>
+	                <span class="icon-bar" style="background-color: white;"></span>
+	                <span class="icon-bar" style="background-color: white;"></span>
+	              </button>
+	              <img class="navbar-brand" src="images/aidr_logo/aidr_logo_90h.png" style="height: 100px;">
+	            </div>
+	            <div id="navbar" class="navbar-collapse collapse navbar-right">
+	              <ul id="menu" class="nav navbar-nav" style="margin: 10px;">
+	                <li><a href="http://aidr.qcri.org/r/science" target="_blank">Science</a></li>
+	                <li><a href="http://aidr.data.qcri.org" target="_blank">Data</a></li>
+                  <li><a href="http://gis.micromappers.org" target="_blank">Maps</a></li>
+	                <li><a href="http://clickers.micromappers.org" target="_blank">Clickers</a></li>
+                  <li><a href="http://micromappers.org/" target="_blank">Blog</a></li>
+	                <li><a href="http://aidr-prod.qcri.org/AIDRFetchManager/index.jsp">Login</a></li>
+	              </ul>
+	            </div>
+	          </div>
+	        </nav>
+
+	      </div>
+	    </div>
+
+
+	    <!-- Map
+	    ================================================== -->
+	    <div id="map" class="home home-fullscreen" data-ride="carousel">
+	      <!-- Indicators -->
+        <div class="row data">
+            <div class="col-md-3 col-sm-2 col-xs-2 dataItem"><span id="totalCollections"></span><br>TOTAL COLLECTIONS</div>
+            <div class="col-md-3 col-sm-2 col-xs-2 dataItem"><span id="runningCollections"></span><br>RUNNING COLLECTIONS</div>
+            <div class="col-md-3 col-sm-6 col-xs-6 dataItem"><span id="totalTweets"></span><br>TOTAL TWEETS</div>
+            <div class="col-md-3 col-sm-2 hidden-xs dataItem"><span id="offlineCollections"></span><br>OFFLINE COLLECTIONS</div>
         </div>
-     </div>
-    <div id="mainwrapper">
-        <div id="main">
-            <div class="carousel">
-                   <table>
-                       <tr>
-                           <td><iframe style="padding: 10px 10px 10px 10px" width="507" height="380" src="https://www.youtube.com/embed/FPHPi0LYz7o?start=467&end=658" frameborder="0" allowfullscreen></iframe></td>
-                           <td>
-                               <table style="width:100%;height:100%">
-                                   <tr>
-                                     <td><p><b>AIDR</b>&mdash;Artificial Intelligence for Disaster Response&mdash;has been awarded the Grand Prize for the <a href="http://www.ossaward.org/bbs/board.php?bo_table=english_notice&amp;wr_id=18" target="blank">2015 Open Source Software System Challenge</a>! <br>Congrats to the entire team of scientists and engineers behind AIDR for your tireless efforts.<br></p><br><a style="text-decoration: underline;" href="http://aidr.qcri.org/r/learn "><b>Learn more about AIDR »</b></a><p></p>
-                                      </td>
-                                   </tr>
-                                   <tr>
-                                     <td>
-                                         <fieldset id="livefeed"><legend><a href="r/data">Live data</a></legend>
-                                             <div class="carouselMin" id="carouselMin">
-                                                <div id="log"></div>
-                                                 <div class="dvLoading" id="dvLoading"></div>
-                                             </div>
-                                        </fieldset>
-                                     </td>
-                                   </tr>
-                               </table>
-                           </td>
-                       </tr>
-                   </table>
-            </div>
-            <div class="dashboard clearfix">
-                <div class="box">
-                    <img src="img/people-icon.png" alt="" />
-                    <h3>Volunteers</h3>
-                    <p><a href="r/clickers">Volunteer with MicroMappers</a></p>
-                </div>
-
-                <div class="box">
-                    <img src="img/data-icon.png" alt="" />
-                    <h3>Analysts</h3>
-                    <p><a href="r/data">View crisis data</a></p><p class="doc"><a href="r/science">The science of AIDR</a></p>
-                </div>
-
-               <div class="box">
-                    <img src="img/laptop-icon.png" alt="" />
-                    <h3>Operators</h3>
-                    <p><a href="r/test">Test AIDR</a></p><!--<p class="doc"><a href="r/manual">Operators' manual</a></p> -->
-                </div>
+	        <!-- <table class="hidden-xs hidden-sm data" id="data">
+		          <tr>
+		            <td class="dataItem text-muted"><span id="totalCollections"></span><br>TOTAL COLLECTIONS</td>
+		            <td class="dataItem text-muted"><span id="runningCollections"></span><br>RUNNING COLLECTIONS</td>
+		            <td class="dataItem text-muted"><span id="totalTweets"></span><br>TOTAL TWEETS</td>
+		            <td class="dataItem text-muted"><span id="offlineCollections"></span><br>OFFLINE COLLECTIONS</td>
+		          </tr>
+	        </table> -->
+          <a id="down-button" class="btn btn-success btn-circle" href="#aidr" role="button"
+            style="position: absolute; z-index: 100; bottom: 10px; right: 10px; background-color: #f7941e"
+            data-toggle="tooltip" data-placement="top" title="Scroll Down" alt="Scroll Down">
+            <i class="fa fa-2x fa-chevron-down" style="margin-top: 5px"></i>
+          </a>
+	    </div><!-- /.carousel -->
 
 
-                <div class="box">
-                    <img src="img/code-icon.png" alt="" />
-                    <h3>Developers</h3>
-                    <p><a href="r/develop">Get the source code</a></p><p class="doc"><a href="r/devwiki">Developers' wiki</a></p>
-                </div>
+	    <!-- Marketing messaging and featurettes
+	    ================================================== -->
+	    <!-- Wrap the rest of the page in another container to center all the content. -->
 
-            </div>
-            <table>
-                <tr>
-                    <td>
-                    <p>The AIDR team fully endorses <a href="https://www.icrc.org/eng/assets/files/other/icrc-002-0999.pdf">ICRC's Data Protection Protocols</a> and <a href="https://docs.unocha.org/sites/dms/Documents/Humanitarianism%20in%20the%20Cyberwarfare%20Age%20-%20OCHA%20Policy%20Paper%2011.pdf">UN's Guidelines on Cyber Security</a>. AIDR users should familiarize themselves with both documents and respect international standards on data privacy, security, and protection.</p>
-                    <p style="padding-top: 1em;">Subscribe to <a href="https://groups.google.com/d/forum/aidr-users">aidr-users</a> to receive announcements about the platform.  Contact <a href="mailto:aidr.qcri@gmail.com" target="_top">AIDR</a> for inquiries.</p></td>
-                </tr>
-            </table>
+	    <div class="container marketing">
+	      <!-- START THE FEATURETTES -->
+        <div class="row featurette" id="aidr">
+	        <div class="col-md-7">
+	        	<h2 class="featurette-heading">AIDR - Artificial Intelligence for Digital Response</h2>
+	          	<p class="lead"><b>AIDR</b>—the Grand Prize for the <a href="http://www.ossaward.org/bbs/board.php?bo_table=english_notice&amp;wr_id=18" target="blank">2015 Open Source Software System Challenge</a>—is a free and open platform to filter and classify social media messages related to emergencies, disasters, and humanitarian crises. AIDR uses human and machine intelligence to automatically tag up to thousands of messages per minute. <a style="text-decoration: underline;" href="http://aidr.qcri.org/r/learn "><b>Learn more »</b></a></p>
+              <p class="lead">The AIDR team fully endorses <a href="https://www.icrc.org/eng/assets/files/other/icrc-002-0999.pdf">ICRC's Data Protection Protocols</a> and <a href="https://docs.unocha.org/sites/dms/Documents/Humanitarianism%20in%20the%20Cyberwarfare%20Age%20-%20OCHA%20Policy%20Paper%2011.pdf">UN's Guidelines on Cyber Security</a>. AIDR users should familiarize themselves with both documents and respect international standards on data privacy, security, and protection.</p>
+	        </div>
+	        <div class="col-md-5">
+	          <img class="featurette-image img-responsive center-block" src="images/aidr_logo/aidr_logo_300h.png">
+            <p style="padding-top: 8em;PADDING-LEFT: 2em;">Subscribe to <a href="https://groups.google.com/d/forum/aidr-users">aidr-users</a> to receive announcements about the platform.  Contact <a href="mailto:aidr.qcri@gmail.com" target="_top">AIDR</a> for inquiries.</p>
+	        </div>
+	      </div>
 
-            <div id="featured">
-                Featured in
-<a href="http://www.wired.co.uk/news/archive/2013-09/30/digital-humanitarianism"><img id="featured-wired" align="absmiddle" src="img/featured/aidr_wired.jpg"/></a>
-<a href="http://live.wsj.com/video/social-mapping-helps-rescuers-in-philippines/F4510A7D-9040-4D89-8852-2F142A7827A2.html"><img id="featured-wsj" align="absmiddle" src="img/featured/aidr_wsj.png"/></a>
-<a href="http://mashable.com/2015/02/06/digital-humanitarians/"><img id="featured-mashable" align="absmiddle" src="img/featured/aidr_mashable.jpg"/></a>
-<a href="http://www.forbes.com/sites/skollworldforum/2013/05/02/crisis-maps-harnessing-the-power-of-big-data-to-deliver-humanitarian-assistance/"><img id="featured-forbes" align="absmiddle" src="img/featured/aidr_forbes.jpg"/></a>
-<a href="http://www.nature.com/news/crowdsourcing-goes-mainstream-in-typhoon-response-1.14186"><img id="featured-natured" align="absmiddle" src="img/featured/aidr_nature.jpg"/></a>
-            </div>
+	      <hr class="featurette-divider">
 
-        </div>
-    </div>
+	      <div class="row featurette">
+	        <div class="col-md-7 col-md-push-5">
+	          <h2 class="featurette-heading">Micromappers</h2>
+	          <p class="lead">MicroMappers is a joint initiative with the United Nations:
+	          	humanitarian organizations need your help to make sense of social media
+	          	generated during disasters.
+	          </p>
+	        </div>
+	        <div class="col-md-5 col-md-pull-7">
+	          <img class="featurette-image img-responsive center-block" data-src="" alt="500x500" src="images/mm.png" data-holder-rendered="true">
+	        </div>
+	      </div>
 
-    <div class="push"></div>
-</div>
+	      <hr class="featurette-divider">
 
-
-<div class="footerwrapper">
-    <div class="footer">
-        <div style="float: right;">
-            <a href="http://www.qcri.qa/">A project by <img align="middle" class="footerqcrilogo" src="img/qcri-gray-horiz.png"/></a>
-        </div>
-        <div style="float: left; padding-top: 16px;">
-            <a class="underlined" href="r/tos">Terms of Service</a> - <a class="underlined" href="r/credits">Credits</a>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript" language="javascript" src="js/app.js"></script>
+	      <!-- /END THE FEATURETTES -->
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	<!-- Three columns for partners -->
+	      <div class="row">
+		  	<div class="col-lg-12 text-center" style="margin-bottom: 80px;">
+		      	<h1>OUR PARTNERS</h1>
+		  	</div>
+	        <div class="col-lg-4">
+	          <a href="http://qcri.com/" target="_blank">
+	          	<img src="images/qcri_logo.png" width="200" height="140">
+	          </a>
+	          <h2>Qatar Computing Research Institute</h2>
+	          <p style="text-align: justify;">
+	          	Qatar Computing Research Institute (QCRI) is a national
+		      	research institute, established in 2010 by Qatar Foundation for Education, Science and
+		        Community Development, a private, non-profit organization that is supporting Qatar’s
+		        transformation from carbon economy to knowledge economy.
+	          </p>
+	          <p>
+	          	<a class="btn btn-default" href="http://qcri.com/" target="_blank" role="button">View details &raquo;</a>
+	          </p>
+	        </div><!-- /.col-lg-4 -->
 
-  ga('create', 'UA-77328-8', 'qcri.org');
-  ga('send', 'pageview');
+	        <div class="col-lg-4">
+	          <a href="http://www.standbytaskforce.org" target="_blank">
+	          	<img src="images/sbtf_logo.png" width="300" height="140">
+	          </a>
+	          <h2>StandBy Task Force</h2>
+	          <p style="text-align: justify;">
+	          	The Standby Task Force is a volunteer led and managed network.
+	          	All Standby Task Force volunteers have equal responsibility for the
+	          	success of our deployments and our overall mission.
+          	  </p>
+	          <p>
+	          	<a class="btn btn-default" href="http://www.standbytaskforce.org" target="_blank" role="button">View details &raquo;</a>
+	          </p>
+	        </div><!-- /.col-lg-4 -->
 
-</script>
+	        <div class="col-lg-4">
+	          <a href="http://www.unocha.org" target="_blank">
+	          	<img src="images/un-ocha-logo.png" alt="500x500" width="140" height="140">
+	          </a>
+	          <h2>United Nations Office for the Coordination of Humanitarian Affairs</h2>
+	          <p style="text-align: justify;">
+	          	OCHA is the part of the United Nations Secretariat responsible for bringing
+	          	together humanitarian actors to ensure a coherent response to emergencies.
+	          	OCHA also ensures there is a framework within which each actor can contribute
+	          	to the overall response effort.
+	          </p>
+	          <p>
+	          	<a class="btn btn-default" href="http://www.unocha.org" target="_blank" role="button">View details &raquo;</a>
+	          </p>
+	        </div><!-- /.col-lg-4 -->
 
-</body>
+	      </div><!-- /.row -->
+
+		  <hr class="featurette-divider">
+
+
+		<!-- five columns for featured in -->
+		  <div class="row">
+	        <div class="col-lg-2 text-center">
+	         	<h3>Featured in</h3>
+	        </div><!-- /.col-lg-2 -->
+	        <div class="col-lg-2">
+	         	 <a href="http://www.wired.co.uk/news/archive/2013-09/30/digital-humanitarianism" target="_blank">
+	         	 	<img src="images/aidr_wired.jpg" alt="500x500">
+	         	 </a>
+	        </div><!-- /.col-lg-2 -->
+	        <div class="col-lg-2">
+	         	 <a href="http://www.wsj.com/video/social-mapping-helps-rescuers-in-philippines/F4510A7D-9040-4D89-8852-2F142A7827A2.html" target="_blank">
+	         	 	<img src="images/aidr_wsj.png" alt="500x500">
+	         	 </a>
+	        </div><!-- /.col-lg-2 -->
+	        <div class="col-lg-2">
+	         	 <a href="http://mashable.com/2015/02/06/digital-humanitarians/#OBRAbMmQCkqQ" target="_blank">
+	         	 	<img src="images/aidr_mashable.jpg" alt="500x500">
+	         	 </a>
+	        </div><!-- /.col-lg-2 -->
+	        <div class="col-lg-2">
+	         	 <a href="http://www.forbes.com/sites/skollworldforum/2013/05/02/crisis-maps-harnessing-the-power-of-big-data-to-deliver-humanitarian-assistance/#5f5dff451533" target="_blank">
+	         	 	<img src="images/aidr_forbes.jpg" alt="500x500">
+	         	 </a>
+	        </div><!-- /.col-lg-2 -->
+	        <div class="col-lg-2">
+	         	 <a href="http://www.nature.com/news/crowdsourcing-goes-mainstream-in-typhoon-response-1.14186" target="_blank">
+	         	 	<img src="images/aidr_nature.jpg" alt="500x500">
+	         	 </a>
+	        </div><!-- /.col-lg-2 -->
+		  </div><!-- /.row -->
+
+	      <hr class="featurette-divider">
+	      <!-- FOOTER -->
+	      <footer>
+	        <p class="pull-right">
+            <a id="back-to-top" class="btn btn-success btn-circle" href="#" role="button"
+              style="margin-top: -25px; border: none; background-color: #f7941e"
+              data-toggle="tooltip" data-placement="top" title="Back to Top" alt="Back to Top">
+              <i class="fa fa-2x fa-chevron-up" style="margin-top: 5px"></i>
+            </a>
+	        	<!-- <a href="#" id="back-to-top">Back to top</a> -->
+	        </p>
+	        <p>
+	        	<a href="http://aidr.data.qcri.org/aidr-data/resources/QSS-Usr-Agr-Print-Version.docx.pdf" target="_blank">TERMS OF SERVICE&nbsp;</a>&#45;
+	        	<a href="http://aidr.qcri.org/r/credits" target="_blank">CREDITS&nbsp;</a>&#45;
+	        	<a href="mailto:aidr.qcri@gmail.com" target="_blank">CONTACTS</a>
+	        </p>
+	      </footer>
+
+		</div><!-- /.container -->
+	</div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+  <script src="js/pusher.min.js"></script>
+	<script>
+		function homeFullScreen() {
+	    	var homeSection = $('.home');
+	    	var windowHeight = $(window).outerHeight();
+	    	if (homeSection.hasClass('home-fullscreen')) {
+	        	$('.home-fullscreen').css('height', windowHeight);
+	    	}
+		}
+
+		//What happen on window resize
+		$(window).resize(function () {
+		    homeFullScreen();
+		});
+
+		function init(){
+			cartodb.createVis('map', 'https://jikimlucas.cartodb.com/api/v2/viz/08064f6a-1095-11e6-81c0-0ecd1babdde5/viz.json', {
+				time_slider: false,
+        cartodb_logo: false,
+        infowindow: false
+			});
+		 }
+
+		$(window).load(function() {
+
+      $('#back-to-top').click(function () {
+          $('body,html').animate({
+              scrollTop: 0
+          }, 800);
+          return false;
+      });
+      $('#down-button').click(function () {
+          $('body,html').animate({
+              scrollTop: $(window).outerHeight()
+          }, 800);
+          return false;
+      });
+
+			homeFullScreen();
+			$.ajax({
+					dataType: "jsonp",
+		      jsonpCallback:"jsonp",
+					url: "http://aidr-prod.qcri.org/AIDRFetchManager/public/collection/statistics",
+			        success: function(data){
+			        	var totalCollectionsCount = (data.data.totalCollectionsCount).toLocaleString();
+			        	var runningCollectionCount = (data.data.runningCollectionCount).toLocaleString();
+			        	var totalDataCount = (data.data.totalDataCount).toLocaleString();
+			        	var offlineCollectionCount = (data.data.offlineCollectionCount).toLocaleString();
+
+			        	$("#totalCollections").text(totalCollectionsCount);
+			        	$("#runningCollections").text(runningCollectionCount);
+			        	$("#totalTweets").text(totalDataCount);
+			        	$("#offlineCollections").text(offlineCollectionCount);
+
+		           	$("#pageContent").show();
+		           	init();
+		           	$("#loadingDiv").hide();
+			        },
+					error: function(data){
+					}
+				});
+
+        var socket = new Pusher('da4f8e02dba516ef1453',{
+           encrypted: true
+         });
+         socket.subscribe('collection');
+         socket.bind('COLLECTION_UPDATED',
+           function(data) {
+             $("#totalCollections").text(data.data.totalCollectionsCount.toLocaleString());
+             $("#runningCollections").text(data.data.runningCollectionCount.toLocaleString());
+             $("#totalTweets").text((data.data.totalDataCount).toLocaleString());
+             $("#offlineCollections").text(data.data.offlineCollectionCount.toLocaleString());
+           }
+         );
+
+		});
+	</script>
+  </body>
 </html>
