@@ -12,7 +12,7 @@
 	  <link rel="stylesheet" href="css/cartodb.css" />
     <link rel="icon" type="image/png" href="images/aidr_wheel_logo/aidr_logo_30h.png">
     <link href="css/font-awesome.min.css" rel="stylesheet" />
-
+    <link href="css/odometer-theme-default.css" rel="stylesheet" />
 	 <style>
 		    html, body {
 		    	width:100%;
@@ -141,10 +141,10 @@
 	    <div id="map" class="home home-fullscreen" data-ride="carousel">
 	      <!-- Indicators -->
         <div class="row data">
-            <div class="col-md-3 col-sm-2 col-xs-2 dataItem"><span id="totalCollections"></span><br>TOTAL COLLECTIONS</div>
-            <div class="col-md-3 col-sm-2 col-xs-2 dataItem"><span id="runningCollections"></span><br>RUNNING COLLECTIONS</div>
-            <div class="col-md-3 col-sm-6 col-xs-6 dataItem"><span id="totalTweets"></span><br>TOTAL TWEETS</div>
-            <div class="col-md-3 col-sm-2 hidden-xs dataItem"><span id="offlineCollections"></span><br>OFFLINE COLLECTIONS</div>
+            <div class="col-md-3 col-sm-2 col-xs-2 dataItem"><span id="totalCollections" class="odometer"></span><br>TOTAL COLLECTIONS</div>
+            <div class="col-md-3 col-sm-2 col-xs-2 dataItem"><span id="runningCollections" class="odometer"></span><br>RUNNING COLLECTIONS</div>
+            <div class="col-md-3 col-sm-6 col-xs-6 dataItem"><span id="totalTweets" class="odometer"></span><br>TOTAL TWEETS</div>
+            <div class="col-md-3 col-sm-2 hidden-xs dataItem"><span id="offlineCollections" class="odometer"></span><br>OFFLINE COLLECTIONS</div>
         </div>
 	        <!-- <table class="hidden-xs hidden-sm data" id="data">
 		          <tr>
@@ -314,6 +314,7 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
   <script src="js/pusher.min.js"></script>
+  <script src="js/odometer.min.js"></script>
 	<script>
 		function homeFullScreen() {
 	    	var homeSection = $('.home');
@@ -337,6 +338,10 @@
 		 }
 
 		$(window).load(function() {
+
+      window.odometerOptions = {
+        duration: 5000, 
+      };
 
       $('#back-to-top').click(function () {
           $('body,html').animate({
