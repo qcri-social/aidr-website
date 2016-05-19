@@ -24,6 +24,7 @@
 		    	width: 100%;
 		    	height:100%;
 		    	background: white;
+          cursor: default;
 		    }
 
 		    .data {
@@ -94,7 +95,11 @@
         line-height: 1.42;
         border-radius: 50%;
       }
-
+      @media (max-width: 768px) {
+          .data {
+              height: 305px;
+          }
+      }
 	  </style>
   </head>
 
@@ -141,10 +146,10 @@
 	    <div id="map" class="home home-fullscreen" data-ride="carousel">
 	      <!-- Indicators -->
         <div class="row data">
-            <div class="col-md-3 col-sm-2 col-xs-2 dataItem"><span id="totalCollections" class="odometer"></span><br>TOTAL COLLECTIONS</div>
-            <div class="col-md-3 col-sm-2 col-xs-2 dataItem"><span id="runningCollections" class="odometer"></span><br>RUNNING COLLECTIONS</div>
-            <div class="col-md-3 col-sm-6 col-xs-6 dataItem"><span id="totalTweets" class="odometer"></span><br>TOTAL TWEETS</div>
-            <div class="col-md-3 col-sm-2 hidden-xs dataItem"><span id="offlineCollections" class="odometer"></span><br>OFFLINE COLLECTIONS</div>
+            <div class="col-md-3 col-sm-2 col-xs-12 dataItem"><span id="totalCollections" class="odometer"></span><br>TOTAL COLLECTIONS</div>
+            <div class="col-md-3 col-sm-2 col-xs-12 dataItem"><span id="runningCollections" class="odometer"></span><br>RUNNING COLLECTIONS</div>
+            <div class="col-md-3 col-sm-6 col-xs-12 dataItem"><span id="totalTweets" class="odometer"></span><br>TOTAL TWEETS</div>
+            <div class="col-md-3 col-sm-2 col-xs-12 dataItem"><span id="offlineCollections" class="odometer"></span><br>OFFLINE COLLECTIONS</div>
         </div>
 	        <!-- <table class="hidden-xs hidden-sm data" id="data">
 		          <tr>
@@ -333,14 +338,17 @@
 			cartodb.createVis('map', 'https://jikimlucas.cartodb.com/api/v2/viz/08064f6a-1095-11e6-81c0-0ecd1babdde5/viz.json', {
 				time_slider: false,
         cartodb_logo: false,
-        infowindow: false
+        infowindow: false,
+        mobile_layout: true,
+        scrollwheel: false,
+        zoomControl: false
 			});
 		 }
 
 		$(window).load(function() {
 
       window.odometerOptions = {
-        duration: 5000, 
+        duration: 5000,
       };
 
       $('#back-to-top').click(function () {
