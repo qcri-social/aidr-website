@@ -380,7 +380,7 @@
 					dataType: "jsonp",
 		      jsonpCallback:"jsonp",
 					url: "http://aidr-prod.qcri.org/AIDRFetchManager/public/collection/statistics",
-			        success: function(data){
+			    success: function(data){
 			        	var totalCollectionsCount = (data.data.totalCollectionsCount).toLocaleString();
 			        	var runningCollectionCount = (data.data.runningCollectionCount).toLocaleString();
 			        	var totalDataCount = (data.data.totalDataCount).toLocaleString();
@@ -394,8 +394,9 @@
 		           	$("#pageContent").show();
 		           	init();
 		           	$("#loadingDiv").hide();
-			        },
-					error: function(data){
+			    },
+					error: function(xhr, ajaxOptions, thrownError){
+            window.location.href = "maintenance.html";
 					}
 				});
 
