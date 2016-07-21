@@ -139,7 +139,7 @@
                   <li><a href="http://gis.micromappers.org" target="_blank">Maps</a></li>
 	                <li><a href="http://clickers.micromappers.org" target="_blank">Clickers</a></li>
                   <li><a href="http://micromappers.org/" target="_blank">Blog</a></li>
-	                <li><a href="http://aidr-prod.qcri.org/AIDRFetchManager/index.jsp">Login</a></li>
+	                <li><a href="http://aidr-web.qcri.org/AIDRFetchManager/index.jsp">Login</a></li>
 	              </ul>
 	            </div>
 	          </div>
@@ -379,7 +379,7 @@
 			$.ajax({
 					dataType: "jsonp",
 		      jsonpCallback:"jsonp",
-					url: "http://aidr-prod.qcri.org/AIDRFetchManager/public/collection/statistics",
+					url: "http://aidr-web.qcri.org/AIDRFetchManager/public/collection/statistics",
 			    success: function(data){
 			        	var totalCollectionsCount = (data.data.totalCollectionsCount).toLocaleString();
 			        	var runningCollectionCount = (data.data.runningCollectionCount).toLocaleString();

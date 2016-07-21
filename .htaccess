@@ -12,7 +12,7 @@ RedirectMatch 301 /r/learn	https://github.com/qcri-social/AIDR/wiki/AIDR-Overvie
 RedirectMatch 301 /r/science	https://github.com/qcri-social/AIDR/wiki/The-science-behind-AIDR
 RedirectMatch 301 /r/manual	https://github.com/qcri-social/AIDR/issues
 RedirectMatch 301 /r/test       http://aidr-prod.qcri.org/AIDRFetchManager/
-RedirectMatch 301 /r/tos	https://github.com/qcri-social/AIDR/wiki/Terms-of-service
+RedirectMatch 301 /r/tos	http://aidr.qcri.org/QSS-Usr-Agr-Print-Version.docx.pdf
 RedirectMatch 301 /r/credits	https://github.com/qcri-social/AIDR/wiki/Credits
 RedirectMatch 301 /r/video-overview	https://www.youtube.com/watch?v=pqI2qcigiCw
 RedirectMatch 301 /r/video-walkthrough	https://www.youtube.com/watch?v=bjeXxUMdvaQ
